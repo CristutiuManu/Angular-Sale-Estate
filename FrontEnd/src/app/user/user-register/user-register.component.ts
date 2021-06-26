@@ -9,19 +9,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class UserRegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
+  userSubmited: boolean;
   constructor() { }
 
   ngOnInit() {
-    this.registrationForm = new FormGroup({
-      userName: new FormControl(null, Validators.required),
-      email: new FormGroup(null, [Validators.required, Validators.email]),
-      password: new FormGroup(null, [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormGroup(null, [Validators.required]),
-      mobile: new FormControl(null, [Validators.required, Validators.maxLength(10)])
-    }, this.passwordMatchingValidator);
-
-    this.registrationForm.controls['userName'].setValue('Default Value')
-  }
+     this.registrationForm = new FormGroup({
+        userName: new FormControl(null, Validators.required),
+        email: new FormControl(null, [Validators.required, Validators.email]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+        confirmPassword: new FormControl(null, [Validators.required]),
+        mobile: new FormControl(null, [Validators.required, Validators.maxLength(10)])
+       }, this.passwordMatchingValidator);
+     //  this.registrationForm.controls['userName'].setValue('Default Value');
+      }
 
   // Custom validator
   passwordMatchingValidator(fg: FormGroup): Validators {
