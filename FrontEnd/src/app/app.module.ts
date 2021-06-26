@@ -11,8 +11,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
-import { UserRegisterComponent } from './user/user-register/user-register.component.ts.component';
-import { UserLoginComponent } from './user/user-login/user-login.component.ts.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 
 
 const appRoutes: Routes = [

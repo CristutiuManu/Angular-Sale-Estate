@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-register.component.ts',
-  templateUrl: './user-register.component.ts.component.html',
-  styleUrls: ['./user-register.component.ts.component.css']
+  templateUrl: './user-register.component.html',
+  styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
 
@@ -19,6 +19,8 @@ export class UserRegisterComponent implements OnInit {
       confirmPassword: new FormGroup(null, [Validators.required]),
       mobile: new FormControl(null, [Validators.required, Validators.maxLength(10)])
     }, this.passwordMatchingValidator);
+
+    this.registrationForm.controls['userName'].setValue('Default Value')
   }
 
   // Custom validator
