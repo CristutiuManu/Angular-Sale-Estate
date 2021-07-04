@@ -1,6 +1,10 @@
+import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TabsetComponent } from 'ngx-bootstrap/tabs';
+import { min } from 'rxjs/operators';
+import { IProperty } from '../IProperty.interface';
 
 @Component({
   selector: 'app-add-property',
@@ -8,7 +12,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-property.component.css']
 })
 export class AddPropertyComponent implements OnInit {
-  @ViewChild('Form') addPropertyForm: NgForm
+  @ViewChild('Form') addPropertyForm: NgForm;
+  @ViewChild('formTabs', { static: false }) formTabs: TabsetComponent;
+
+  propertyTypes: Array<string> = ['House', 'Apartment',  'Duplex'];
+  furnishTypes: Array<string> = ['Fully', 'Semi',  'Unfurnished'];
+  propertyView: IProperty = {
+    Id: null,
+    Name: '',
+    Price: null,
+    SellRent: null,
+    Type: null
+  };
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -20,6 +36,10 @@ export class AddPropertyComponent implements OnInit {
 
   onSubmit(Form: NgForm) {
     console.log(this.addPropertyForm);
+  }
+
+  selectTab(tabId: number) {
+    this.formTabs.tabs[tabId].active = true;
   }
 
 }
